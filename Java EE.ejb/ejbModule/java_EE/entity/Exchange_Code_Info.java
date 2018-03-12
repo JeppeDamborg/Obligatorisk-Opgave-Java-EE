@@ -37,5 +37,53 @@ public class Exchange_Code_Info implements Serializable {
 	public Exchange_Code_Info() {
 		super();
 	}
+
+	public long getMic_id() {
+		return mic_id;
+	}
+
+	public void setMic_id(long mic_id) {
+		this.mic_id = mic_id;
+	}
+
+	public String getMic() {
+		return mic;
+	}
+
+	public void setMic(String mic) {
+		this.mic = mic;
+	}
+
+	public String getOperating_mic() {
+		return operating_mic;
+	}
+
+	public void setOperating_mic(String operating_mic) {
+		this.operating_mic = operating_mic;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCorp_exchange() {
+		return corp_exchange;
+	}
+
+	public void setCorp_exchange(String corp_exchange) {
+		this.corp_exchange = corp_exchange;
+	}
+
+	public Collection<Mapping_info> getMap_info() {
+		return map_info;
+	}
+
+	public void setMap_info(Collection<Mapping_info> map_info) {
+		this.map_info = map_info;
+	}
    
 }
