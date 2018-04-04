@@ -29,8 +29,7 @@ public class Exchange_Code_Info implements Serializable {
 	@NotNull
 	@Column(length = 50)
 	private String corp_exchange;
-	@ManyToMany
-	@JoinTable(name = "Info_Keys", joinColumns = @JoinColumn(name = "mic_id", referencedColumnName = "mic_id"), inverseJoinColumns = @JoinColumn(name = "exch_id", referencedColumnName = "exch_id"))
+	@ManyToMany(mappedBy="ex_code")
 	private Collection <Mapping_info> map_info;
 	private static final long serialVersionUID = 1L;
 

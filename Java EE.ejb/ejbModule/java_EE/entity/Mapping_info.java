@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -40,7 +42,8 @@ public class Mapping_info implements Serializable {
 	@Size(min=2)
 	@Column(length = 2)
 	private String iso_country;
-	@ManyToMany(mappedBy="map_info")
+	@ManyToMany
+	@JoinTable(name = "Info_Keys", joinColumns = @JoinColumn(name = "exch_id", referencedColumnName = "exch_id"), inverseJoinColumns = @JoinColumn(name = "mic_id", referencedColumnName = "mic_id"))
 	private Collection<Exchange_Code_Info> ex_code;
 	
 	private static final long serialVersionUID = 1L;
