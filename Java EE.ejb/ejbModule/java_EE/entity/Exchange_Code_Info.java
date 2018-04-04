@@ -11,23 +11,26 @@ import javax.validation.constraints.NotNull;
  *
  */
 @Entity
+@NamedQuery(name = "deleteExchangeCode", query = "DELETE FROM Exchange_Code_Info")
 
 public class Exchange_Code_Info implements Serializable {
 
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long mic_id;
 	@NotNull
-	@Column(length = 4)
+	//@Column(length = 4)
 	private String mic;
 	@NotNull
-	@Column(length = 4)
+	//@Column(length = 4)
 	private String operating_mic;
 	@NotNull
-	@Column(length = 250)
+	//@Column(length = 250)
 	private String name;
 	@NotNull
-	@Column(length = 50)
+	//@Column(length = 50)
 	private String corp_exchange;
 	@ManyToMany(mappedBy="ex_code")
 	private Collection <Mapping_info> map_info;

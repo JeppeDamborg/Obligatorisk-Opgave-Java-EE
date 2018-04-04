@@ -3,7 +3,6 @@ package java_EE.entity;
 import java.io.Serializable;
 import java.util.Collection;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,15 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  * Entity implementation class for Entity: Mapping_info
  *
  */
 @Entity
-
+@NamedQuery(name = "deleteMappingInfo", query = "DELETE FROM Mapping_info")
 public class Mapping_info implements Serializable {
 
 	
@@ -27,20 +26,20 @@ public class Mapping_info implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long exch_id;
 	@NotNull
-	@Size(min=2)
-	@Column(length = 2)
+	//@Size(min=2)
+	//@Column(length = 2)
 	private String exch_code;
 	@NotNull
-	@Size(min=2)
-	@Column(length = 50)
+	//@Size(min=2)
+	//@Column(length = 50)
 	private String exch_name;
 	@NotNull
-	@Size(min=2)
-	@Column(length = 2)
+	//@Size(min=2)
+	//@Column(length = 2)
 	private String composite_code;
 	@NotNull
-	@Size(min=2)
-	@Column(length = 2)
+	//@Size(min=2)
+	//@Column(length = 2)
 	private String iso_country;
 	@ManyToMany
 	@JoinTable(name = "Info_Keys", joinColumns = @JoinColumn(name = "exch_id", referencedColumnName = "exch_id"), inverseJoinColumns = @JoinColumn(name = "mic_id", referencedColumnName = "mic_id"))
