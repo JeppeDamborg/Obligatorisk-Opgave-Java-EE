@@ -17,18 +17,19 @@
 <div class="teststyle">
  <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
  <label>Search criteria:</label>
-   <select name="Søg">     
-  <option value="#{papir.id_ISIN}">ID-ISIN</option>
-  <option value="#{papir.ticker}">Ticker</option>
-</select>
-<p:inputText />     
+   <p:selectOneMenu id="console" value="#{searching.id_Type}" style="width:125px">
+            <f:selectItem itemLabel="Select One" itemValue="" />
+            <f:selectItem itemLabel="Ticker" itemValue="TICKER" />
+            <f:selectItem itemLabel="Isin" itemValue="ID_ISIN" />
+        </p:selectOneMenu>
+<p:inputText id="id_value" required="true" value="#{searching.id_Value}" />     
 <label>Currency (optional):</label>
-<p:inputText id="currency" required="false" value="#{papir.currency}" />  
+<p:inputText id="currency" required="false" value="#{searching.currency}" />  
 <label>MIC (optional):</label>
-<p:inputText id="MIC" required="false" value="#{papir.micCode}" />  
+<p:inputText id="MIC" required="false" value="#{searching.micCode}" />  
        </h:panelGrid>
 
-<p:dataTable var="papir" value="#{data.data}">
+<p:dataTable var="papir" value="#{searching.papir}">
     <p:column headerText="Name">
         <h:outputText value="#{papir.name}" />
     </p:column>
