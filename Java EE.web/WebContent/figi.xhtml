@@ -5,9 +5,52 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-<h:head></h:head>
 
+<h:head>
+<h1 style="text-align: center;">Søg på dit papir her</h1>
+<style type="text/css" media="screen"> @import url('style.css');
+</style>
+</h:head>
 
+<body>
 
+<div class="teststyle">
+ <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+ <label>Search criteria:</label>
+   <select name="Søg">     
+  <option value="#{papir.id_ISIN}">ID-ISIN</option>
+  <option value="#{papir.ticker}">Ticker</option>
+</select>
+<p:inputText />     
+<label>Currency (optional):</label>
+<p:inputText id="currency" required="false" value="#{papir.currency}" />  
+<label>MIC (optional):</label>
+<p:inputText id="MIC" required="false" value="#{papir.micCode}" />  
+       </h:panelGrid>
+
+<p:dataTable var="papir" value="#{data.data}">
+    <p:column headerText="Name">
+        <h:outputText value="#{papir.name}" />
+    </p:column>
+ 
+    <p:column headerText="Ticker">
+        <h:outputText value="#{papir.ticker}" />
+    </p:column>
+ 
+    <p:column headerText="Exch-code">
+        <h:outputText value="#{papir.exchCode}" />
+    </p:column>
+ 
+    <p:column headerText="Figi">
+        <h:outputText value="#{papir.figi}" />
+    </p:column>
+    
+    <p:column headerText="Unique ID">
+        <h:outputText value="#{papir.uniqueID}" />
+    </p:column>    
+</p:dataTable>
+</div>
+
+</body>
 
 </html>
