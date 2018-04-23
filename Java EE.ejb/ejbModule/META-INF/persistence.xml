@@ -5,7 +5,7 @@
 		<class>java_EE.entity.Exchange_Code_Info</class>
 		<class>java_EE.entity.Mapping_info</class>
 		<properties>
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="javax.persistence.schema-generation.database.action" value="none"/>
 		</properties>
 	</persistence-unit>
 </persistence>

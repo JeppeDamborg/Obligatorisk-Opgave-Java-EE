@@ -11,7 +11,6 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
 import domian.Data;
-import domian.Papir;
 import domian.PapirSamlet;
 
 /**
@@ -23,17 +22,13 @@ public class RestKlient implements RestKlientLocal {
     
     
     @Override
-    public List<Data> search(Papir papir){
+    public List<Data> search(PapirSamlet papir){
     	
     	Client client = ClientBuilder.newClient();
     	List<PapirSamlet> samletliste = new ArrayList<>();
-    	PapirSamlet indput = new PapirSamlet();
-    	indput.setIdType("ID_ISIN");
-    	indput.setIdValue(papir.getId_ISIN());
-    	indput.setCurrency(papir.getCurrency());
-    	indput.setMicCode(papir.getMicCode());
-    	samletliste.add(indput);
+    	samletliste.add(papir);
     	List<Data> list = client.target(PATH).request(MediaType.APPLICATION_JSON).post(Entity.entity(samletliste, "text/json") , new GenericType<List<Data>>(){});
+    	System.out.println("list size:" + list.size());
     	return list;		
     	
     }

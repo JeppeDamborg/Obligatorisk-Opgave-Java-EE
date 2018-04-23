@@ -5,12 +5,12 @@ import java.util.List;
 import javax.ejb.Local;
 
 import domian.Data;
-import domian.Papir;
+import domian.PapirSamlet;
 
 @Local
 public interface RestKlientLocal {
 
 	
 	
-	public List<Data> search(Papir papir);
+	public List<Data> search(PapirSamlet papir);
 }

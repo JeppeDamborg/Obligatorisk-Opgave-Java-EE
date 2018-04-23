@@ -15,7 +15,7 @@
 <body>
 
 <div class="teststyle">
- <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+ <h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
  <label>Search criteria:</label>
    <p:selectOneMenu id="console" value="#{searching.id_Type}" style="width:125px">
             <f:selectItem itemLabel="Select One" itemValue="" />
@@ -27,6 +27,8 @@
 <p:inputText id="currency" required="false" value="#{searching.currency}" />  
 <label>MIC (optional):</label>
 <p:inputText id="MIC" required="false" value="#{searching.micCode}" />  
+<p:commandButton id="search" value="Search" actionListener="#{searching.search}"></p:commandButton>
+
        </h:panelGrid>
 
 <p:dataTable var="papir" value="#{searching.papir}">
