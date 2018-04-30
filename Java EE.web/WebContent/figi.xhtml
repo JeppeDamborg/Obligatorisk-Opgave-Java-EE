@@ -31,8 +31,7 @@
        </h:panelGrid>
 
 <div style="padding: .2em">
-<p:growl id="msgs" showDetail="true" />
-<p:dataTable var="papir" value="#{searching.papir}">
+<p:dataTable id="eventsDT" var="papir" value="#{dtSelectionView.papir}" selectionMode="single" selection="#{dtSelectionView.papir}" rowKey="#{papir.id_ISIN}">
 
  <f:facet name="header">
             Choose paper
@@ -59,11 +58,7 @@
     <p:column headerText="Unique ID">
         <h:outputText value="#{papir.uniqueID}" />
     </p:column>
-    <p:column width="50">
-    <p:commandButton oncomplete="PF('carDialog').show()" icon="fa fa-search" title="View" style="a">
-                <f:setPropertyActionListener value="Search" target="#{searching.search}" />
-            </p:commandButton>    
-            </p:column>
+   
 </p:dataTable>
 </div>
 </h:form>
