@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
@@ -18,7 +19,11 @@ import javax.validation.constraints.NotNull;
  *
  */
 @Entity
-@NamedQuery(name = "deleteMappingInfo", query = "DELETE FROM Mapping_info")
+@NamedQueries({
+	@NamedQuery(name = "deleteMappingInfo", query = "DELETE FROM Mapping_info"),
+	@NamedQuery(name = "SearchPaper", query = "SELECT e FROM Mapping_info e " + "WHERE e.exch_code = :exch_code")
+})
+
 public class Mapping_info implements Serializable {
 
 	
