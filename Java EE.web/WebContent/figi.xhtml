@@ -7,15 +7,14 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 <h1 style="text-align: center;">Søg på dit papir her</h1> 
 </h:head>
-
-
+	
 
 <body>
-<h:form>
-<div class="teststyle">
- <h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+<h:form id="form">
+ <h:panelGrid columns="8" style="margin-bottom:10px" cellpadding="5">
  <label>Search criteria:</label>
    <p:selectOneMenu id="console" value="#{searching.id_Type}" style="width:125px">
             <f:selectItem itemLabel="Select One" itemValue="" />
@@ -31,7 +30,16 @@
 
        </h:panelGrid>
 
+<div style="padding: .2em">
+<p:growl id="msgs" showDetail="true" />
 <p:dataTable var="papir" value="#{searching.papir}">
+
+ <f:facet name="header">
+            Choose paper
+        </f:facet>
+        <p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}" update=":form:msgs" />
+        <p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update=":form:msgs" />
+        
     <p:column headerText="Name">
         <h:outputText value="#{papir.name}" />
     </p:column>
@@ -50,7 +58,12 @@
     
     <p:column headerText="Unique ID">
         <h:outputText value="#{papir.uniqueID}" />
-    </p:column>    
+    </p:column>
+    <p:column width="50">
+    <p:commandButton oncomplete="PF('carDialog').show()" icon="fa fa-search" title="View" style="a">
+                <f:setPropertyActionListener value="Search" target="#{searching.search}" />
+            </p:commandButton>    
+            </p:column>
 </p:dataTable>
 </div>
 </h:form>

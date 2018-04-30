@@ -4,7 +4,13 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 
 import domian.Papir;
 import domian.PapirSamlet;
@@ -13,6 +19,7 @@ import java_EE.ejb.RestKlientLocal;
 
 @Named
 @RequestScoped
+@ManagedBean(name="dtSelectionView")
 public class Searching {
 	
 	@EJB RestKlientLocal ejb;
@@ -22,6 +29,7 @@ public class Searching {
 	private String currency;
 	private String micCode;
 	private List<Papir> papir;
+	private Papir selectedPapir;
 	
 	
 	
@@ -57,6 +65,13 @@ public class Searching {
 		this.id_Value = id_Value;
 	}
 	
+	public Papir getSelectedPapir() {
+		return selectedPapir;
+	}
+	public void setSelectedPapir(Papir selectedPapir) {
+		this.selectedPapir = selectedPapir;
+	}
+	
 	public void search(){
 		System.out.println("Search enter:");
 		PapirSamlet samlet = new PapirSamlet();
@@ -66,5 +81,16 @@ public class Searching {
 		samlet.setMicCode(micCode);
 		papir = ejb.search(samlet).get(0).getData();
 	}
+	
+	public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Selected", ((Papir) event.getObject()).getId_ISIN());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+ 
+    public void onRowUnselect(UnselectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Unselected", ((Papir) event.getObject()).getId_ISIN());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+	
 	
 }
