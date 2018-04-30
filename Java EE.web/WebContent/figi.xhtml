@@ -8,12 +8,12 @@
 
 <h:head>
 <h1 style="text-align: center;">Søg på dit papir her</h1> 
-<style type="text/css" media="screen"> @import url('style.css');
-</style>
 </h:head>
 
-<body>
 
+
+<body>
+<h:form>
 <div class="teststyle">
  <h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
  <label>Search criteria:</label>
@@ -27,7 +27,7 @@
 <p:inputText id="currency" required="false" value="#{searching.currency}" />  
 <label>MIC (optional):</label>
 <p:inputText id="MIC" required="false" value="#{searching.micCode}" />  
-<p:commandButton id="search" value="Search" actionListener="#{searching.search}"></p:commandButton>
+<p:commandButton id="search" value="Search" actionListener="#{searching.search}" ajax="false"></p:commandButton>
 
        </h:panelGrid>
 
@@ -53,7 +53,7 @@
     </p:column>    
 </p:dataTable>
 </div>
-
+</h:form>
 </body>
 
 </html>
