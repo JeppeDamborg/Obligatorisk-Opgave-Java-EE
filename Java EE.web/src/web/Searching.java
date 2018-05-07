@@ -81,4 +81,6 @@ public class Searching implements Serializable {
 		papirer = ejb.search(samlet).get(0).getData();
 		System.out.println("papir.size" + papirer.size());
 	}
+	
+	//Hej Jeppe
 }
