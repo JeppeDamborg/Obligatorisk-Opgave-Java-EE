@@ -39,4 +39,7 @@ public class PapirSamlet {
 		this.idValue = idValue;
 	}
 
+	public String toJson(){
+		return null;
+	}
 }

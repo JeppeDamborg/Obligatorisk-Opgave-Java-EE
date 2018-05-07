@@ -85,8 +85,13 @@ public class Searching implements Serializable {
 		System.out.println("papir.size" + papirer.size());
 	}
 	
-	public void readExcel() throws IOException {
-		poi.readExcel();
+	public void readExcel() {
+		try {
+			poi.readExcel();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 

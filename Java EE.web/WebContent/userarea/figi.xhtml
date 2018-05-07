@@ -27,7 +27,7 @@
 <label>MIC (optional):</label>
 <p:inputText id="MIC" required="false" value="#{searching.micCode}" />  
 <p:commandButton id="search" value="Search" actionListener="#{searching.search}" ajax="false"></p:commandButton>
-<p:commandButton id="triggerPOI" value="Read Excel" actionListener="#{searching.readExcel}" ajax="false"></p:commandButton>
+
 
        </h:panelGrid>
 
@@ -81,6 +81,9 @@
         </p:outputPanel>
     </p:dialog>	
 </div>
+</h:form>
+<h:form id="form2">
+<p:commandButton id="triggerPOI" value="Read Excel" actionListener="#{searching.readExcel}" ajax="false"></p:commandButton>
 </h:form>
 </body>
 
