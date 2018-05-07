@@ -14,6 +14,7 @@
 
 <body>
 <h:form id="form">
+ <p:growl id="msgs" showDetail="true" />
  <h:panelGrid columns="8" style="margin-bottom:10px" cellpadding="5">
  <label>Search criteria:</label>
    <p:selectOneMenu id="console" value="#{searching.id_Type}" style="width:125px">
@@ -34,11 +35,7 @@
 <div style="padding: .2em">
 <p:dataTable id="eventsDT" var="papir" value="#{searching.papirer}" selectionMode="single" selection="#{searching.selectedPapir}" rowKey="#{searching.id_Value}">
 
- <f:facet name="header">
-            Choose paper
-        </f:facet>
-        <p:ajax event="rowSelect" listener="#{searching.onRowSelect}"/>
-        <p:ajax event="rowUnselect" listener="#{searching.onRowUnselect}"/>
+        <p:ajax event="rowSelect" update=":form:papirDetail" oncomplete="PF('papirDialog').show()"/>
         
     <p:column headerText="Name">
         <h:outputText value="#{papir.name}" />
@@ -61,6 +58,29 @@
     </p:column>
    
 </p:dataTable>
+
+<p:dialog header="Papir Info" widgetVar="papirDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="papirDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty searching.selectedPapir}" columnClasses="label,value">
+ 
+                <h:outputText value="Name:" />
+                <h:outputText value="#{searching.selectedPapir.name}" />
+ 
+                <h:outputText value="Ticker" />
+                <h:outputText value="#{searching.selectedPapir.ticker}" />
+ 
+                <h:outputText value="Color:" />
+                <h:outputText value="#{searching.selectedPapir.exchCode}" />
+ 
+                <h:outputText value="figi" />
+                <h:outputText value="$#{searching.selectedPapir.figi}" />
+                
+                <h:outputText value="Unique ID" />
+                <h:outputText value="$#{searching.selectedPapir.uniqueID}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+	
 </div>
 </h:form>
 </body>

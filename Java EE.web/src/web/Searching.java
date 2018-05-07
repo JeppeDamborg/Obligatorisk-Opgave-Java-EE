@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -20,7 +19,6 @@ import java_EE.ejb.RestKlientLocal;
 
 @Named
 @SessionScoped
-@ManagedBean(name="dtSelectionView")
 public class Searching implements Serializable {
 	
 	@EJB RestKlientLocal ejb;
@@ -83,16 +81,4 @@ public class Searching implements Serializable {
 		papirer = ejb.search(samlet).get(0).getData();
 		System.out.println("papir.size" + papirer.size());
 	}
-	
-	public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Car Selected", ((Papir) event.getObject()).getId_ISIN());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
- 
-    public void onRowUnselect(UnselectEvent event) {
-        FacesMessage msg = new FacesMessage("Car Unselected", ((Papir) event.getObject()).getId_ISIN());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-	
-	
 }
