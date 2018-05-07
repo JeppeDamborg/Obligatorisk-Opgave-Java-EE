@@ -31,13 +31,13 @@
        </h:panelGrid>
 
 <div style="padding: .2em">
-<p:dataTable id="eventsDT" var="papir" value="#{dtSelectionView.papir}" selectionMode="single" selection="#{dtSelectionView.papir}" rowKey="#{papir.id_ISIN}">
+<p:dataTable id="eventsDT" var="papir" value="#{searching.papirer}" selectionMode="single" selection="#{searching.selectedPapir}" rowKey="#{searching.id_Value}">
 
  <f:facet name="header">
             Choose paper
         </f:facet>
-        <p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}" update=":form:msgs" />
-        <p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update=":form:msgs" />
+        <p:ajax event="rowSelect" listener="#{searching.onRowSelect}"/>
+        <p:ajax event="rowUnselect" listener="#{searching.onRowUnselect}"/>
         
     <p:column headerText="Name">
         <h:outputText value="#{papir.name}" />

@@ -1,9 +1,10 @@
 package web;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -18,9 +19,9 @@ import java_EE.ejb.RestKlientLocal;
 
 
 @Named
-@RequestScoped
+@SessionScoped
 @ManagedBean(name="dtSelectionView")
-public class Searching {
+public class Searching implements Serializable {
 	
 	@EJB RestKlientLocal ejb;
 	
@@ -28,7 +29,7 @@ public class Searching {
 	private String id_Value;
 	private String currency;
 	private String micCode;
-	private List<Papir> papir;
+	private List<Papir> papirer;
 	private Papir selectedPapir;
 	
 	
@@ -52,11 +53,11 @@ public class Searching {
 	public void setMicCode(String micCode) {
 		this.micCode = micCode;
 	}
-	public List<Papir> getPapir() {
-		return papir;
+	public List<Papir> getPapirer() {
+		return papirer;
 	}
-	public void setPapir(List<Papir> papir) {
-		this.papir = papir;
+	public void setPapirer(List<Papir> papir) {
+		this.papirer = papir;
 	}
 	public String getId_Value() {
 		return id_Value;
@@ -79,7 +80,8 @@ public class Searching {
 		samlet.setIdValue(id_Value);
 		samlet.setCurrency(currency);
 		samlet.setMicCode(micCode);
-		papir = ejb.search(samlet).get(0).getData();
+		papirer = ejb.search(samlet).get(0).getData();
+		System.out.println("papir.size" + papirer.size());
 	}
 	
 	public void onRowSelect(SelectEvent event) {

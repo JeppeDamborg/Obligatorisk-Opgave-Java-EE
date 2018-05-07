@@ -3,6 +3,7 @@ package java_EE.ejb;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -17,6 +18,7 @@ import domian.PapirSamlet;
  * Session Bean implementation class RestKlient
  */
 @Stateless
+//@RolesAllowed("role1")
 public class RestKlient implements RestKlientLocal {
 	private final String PATH = "https://api.openfigi.com/v1/mapping";
     
