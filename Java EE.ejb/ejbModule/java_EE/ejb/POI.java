@@ -27,12 +27,12 @@ import java_EE.entity.Mapping_info;
  */
 @Stateless
 @LocalBean
-public class POI {
+public class POI implements POILocal{
 	@PersistenceContext private EntityManager em;
 	
 	Exchange_Code_Info mic = new Exchange_Code_Info();
 //	@Schedule(hour="*",minute="*",second="*/30")
-	@Schedule(hour="*",minute="*/4")
+//	@Schedule(hour="*",minute="*/4")
 	public void readExcel() throws IOException {
 		em.createNamedQuery("deleteMappingInfo").executeUpdate();
 		em.createNamedQuery("deleteExchangeCode").executeUpdate();

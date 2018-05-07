@@ -1,5 +1,6 @@
 package web;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.primefaces.event.UnselectEvent;
 
 import domian.Papir;
 import domian.PapirSamlet;
+import java_EE.ejb.POILocal;
 import java_EE.ejb.RestKlientLocal;
 
 
@@ -22,6 +24,7 @@ import java_EE.ejb.RestKlientLocal;
 public class Searching implements Serializable {
 	
 	@EJB RestKlientLocal ejb;
+	@EJB POILocal poi;
 	
 	private String id_Type;
 	private String id_Value;
@@ -81,6 +84,12 @@ public class Searching implements Serializable {
 		papirer = ejb.search(samlet).get(0).getData();
 		System.out.println("papir.size" + papirer.size());
 	}
+	
+	public void readExcel() throws IOException {
+		poi.readExcel();
+	}
+	
+
 	
 	//Hej Jeppe
 }

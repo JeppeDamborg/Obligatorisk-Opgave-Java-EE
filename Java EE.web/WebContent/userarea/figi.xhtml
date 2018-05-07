@@ -14,7 +14,7 @@
 <body>
 <h:form id="form">
  <p:growl id="msgs" showDetail="true" />
- <h:panelGrid columns="8" style="margin-bottom:10px" cellpadding="5">
+ <h:panelGrid columns="9" style="margin-bottom:10px" cellpadding="5">
  <label>Search criteria:</label>
    <p:selectOneMenu id="console" value="#{searching.id_Type}" style="width:125px">
             <f:selectItem itemLabel="Select One" itemValue="" />
@@ -27,6 +27,7 @@
 <label>MIC (optional):</label>
 <p:inputText id="MIC" required="false" value="#{searching.micCode}" />  
 <p:commandButton id="search" value="Search" actionListener="#{searching.search}" ajax="false"></p:commandButton>
+<p:commandButton id="triggerPOI" value="Read Excel" actionListener="#{searching.readExcel}" ajax="false"></p:commandButton>
 
        </h:panelGrid>
 
@@ -78,8 +79,7 @@
                 <h:outputText value="$#{searching.selectedPapir.uniqueID}" />
             </p:panelGrid>
         </p:outputPanel>
-    </p:dialog>
-	
+    </p:dialog>	
 </div>
 </h:form>
 </body>
