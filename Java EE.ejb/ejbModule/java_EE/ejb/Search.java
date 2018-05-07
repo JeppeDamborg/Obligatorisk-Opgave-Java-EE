@@ -59,8 +59,12 @@ public class Search implements SearchLocal {
 
 	@Override
 	public List<Exch> search(String exch) {
-		List<Exch> exchlist = new ArrayList<>();
-		
+		List<Exch> exchlist = new ArrayList<>();		
+		@SuppressWarnings("unchecked")
+		List<Mapping_info> list = em.createNamedQuery("SearchPaper").setParameter("exch_code", exch).getResultList();
+		for (Mapping_info mi: list) {
+			exchlist.add(map(mi));
+		}
 		return exchlist;
 	}
 
