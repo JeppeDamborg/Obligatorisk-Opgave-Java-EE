@@ -1,5 +1,8 @@
 package domian;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
 public class PapirSamlet {
 
 	private String idType;
@@ -40,6 +43,15 @@ public class PapirSamlet {
 	}
 
 	public String toJson(){
-		return null;
+		JsonObjectBuilder builder = Json.createObjectBuilder()
+				.add("idType", this.idType)
+				.add("idValue", this.idValue);
+		if(currency != null && !currency.equals("")){
+			builder.add("currency", currency);
+		}
+		if(micCode != null && !micCode.equals("")){
+			builder.add("micCode", micCode);
+		}
+		return Json.createArrayBuilder().add(builder).build().toString();
 	}
 }

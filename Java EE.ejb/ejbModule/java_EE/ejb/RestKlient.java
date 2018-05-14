@@ -27,9 +27,7 @@ public class RestKlient implements RestKlientLocal {
     public List<Data> search(PapirSamlet papir){
     	
     	Client client = ClientBuilder.newClient();
-    	List<PapirSamlet> samletliste = new ArrayList<>();
-    	samletliste.add(papir);
-    	List<Data> list = client.target(PATH).request(MediaType.APPLICATION_JSON).post(Entity.entity(samletliste, "text/json") , new GenericType<List<Data>>(){});
+    	List<Data> list = client.target(PATH).request(MediaType.APPLICATION_JSON).post(Entity.entity(papir.toJson(), "text/json") , new GenericType<List<Data>>(){});
     	System.out.println("list size:" + list.size());
     	return list;		
     	

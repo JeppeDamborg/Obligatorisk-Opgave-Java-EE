@@ -87,5 +87,7 @@ public class Exchange_Code_Info implements Serializable {
 	public void setMap_info(Collection<Mapping_info> map_info) {
 		this.map_info = map_info;
 	}
+	
+	
    
 }

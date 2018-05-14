@@ -82,7 +82,9 @@ public class Searching implements Serializable {
 		samlet.setCurrency(currency);
 		samlet.setMicCode(micCode);
 		papirer = ejb.search(samlet).get(0).getData();
+		if(papirer != null){
 		System.out.println("papir.size" + papirer.size());
+		}
 	}
 	
 	public void readExcel() {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.json.Json;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -67,5 +68,7 @@ public class Search implements SearchLocal {
 		}
 		return exchlist;
 	}
+	
+	
 
 }
