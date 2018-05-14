@@ -33,7 +33,7 @@
 
 
 <div style="padding: .2em">
-<p:dataTable id="eventsDT" var="papir" value="#{searching.papirer}" selectionMode="single" selection="#{searching.selectedPapir}" rowKey="#{searching.id_Value}">
+<p:dataTable id="eventsDT" var="papir" value="#{searching.papirer}" selectionMode="single" selection="#{searching.selectedPapir}" rowKey="#{papir.figi}">
 
         <p:ajax event="rowSelect" update=":form:papirDetail" oncomplete="PF('papirDialog').show()"/>
         
