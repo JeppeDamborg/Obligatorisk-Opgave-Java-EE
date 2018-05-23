@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import domian.Exch;
+import domian.Mic;
 
 @Local
 public interface SearchLocal {
 	
-	public List<Exch> search(String exch);
+	public List<Mic> search(String exch);
 
 }

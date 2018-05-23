@@ -6,17 +6,15 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
-
+import domian.Exch;
+import domian.Mic;
 import domian.Papir;
 import domian.PapirSamlet;
 import java_EE.ejb.POILocal;
 import java_EE.ejb.RestKlientLocal;
+import java_EE.ejb.SearchLocal;
 
 
 @Named
@@ -25,6 +23,7 @@ public class Searching implements Serializable {
 	
 	@EJB RestKlientLocal ejb;
 	@EJB POILocal poi;
+	@EJB SearchLocal sl;
 	
 	private String id_Type;
 	private String id_Value;
@@ -32,7 +31,9 @@ public class Searching implements Serializable {
 	private String micCode;
 	private List<Papir> papirer;
 	private Papir selectedPapir;
-	
+	private List<Mic> mics;
+	private Mic mic;
+	private Exch exch;
 	
 	
 	public String getId_Type() {
@@ -96,7 +97,14 @@ public class Searching implements Serializable {
 		}
 	}
 	
-
+	public void searchEx(){
+		try {
+			sl.search(selectedPapir.getExchCode());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	//Hej Jeppe
 }

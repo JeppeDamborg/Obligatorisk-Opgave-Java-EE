@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.json.Json;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -59,12 +58,14 @@ public class Search implements SearchLocal {
     }
 
 	@Override
-	public List<Exch> search(String exch) {
-		List<Exch> exchlist = new ArrayList<>();		
+	public List<Mic> search(String exch) {
+		List<Mic> exchlist = new ArrayList<>();		
 		@SuppressWarnings("unchecked")
 		List<Mapping_info> list = em.createNamedQuery("SearchPaper").setParameter("exch_code", exch).getResultList();
 		for (Mapping_info mi: list) {
-			exchlist.add(map(mi));
+			for(Exchange_Code_Info ei: mi.getEx_code()){
+				exchlist.add(map(ei));
+			}
 		}
 		return exchlist;
 	}
