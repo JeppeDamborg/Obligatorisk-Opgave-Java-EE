@@ -1,8 +1,8 @@
 package domian;
 
-import java.util.Collection;
+import java.io.Serializable;
 
-public class Mic {
+public class Mic implements Serializable {
 		
 	
 	private String mic;

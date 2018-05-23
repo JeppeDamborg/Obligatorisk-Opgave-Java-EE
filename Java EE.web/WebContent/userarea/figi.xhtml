@@ -35,7 +35,7 @@
 <div style="padding: .2em">
 <p:dataTable id="eventsDT" var="papir" value="#{searching.papirer}" selectionMode="single" selection="#{searching.selectedPapir}" rowKey="#{papir.figi}">
 
-        <p:ajax event="rowSelect" update=":form:papirDetail" oncomplete="PF('papirDialog').show()"/>
+        <p:ajax event="rowSelect" listener="#{searching.searchEx}" update=":form:papirDetail" oncomplete="PF('papirDialog').show()"/>
         
     <p:column headerText="Name">
         <h:outputText value="#{papir.name}" />
@@ -61,22 +61,21 @@
 
 <p:dialog header="Papir Info" widgetVar="papirDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
         <p:outputPanel id="papirDetail" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty searching.selectedPapir}" columnClasses="label,value">
+            <p:panelGrid  columns="2" rendered="#{not empty searching.mic}" columnClasses="label,value">
+ 
+                <h:outputText value="Mic:" />
+                <h:outputText value="#{searching.mic.mic}" />
+ 
+                <h:outputText value="Operating-Mic:" />
+                <h:outputText value="#{searching.mic.operating_mic}" />
  
                 <h:outputText value="Name:" />
-                <h:outputText value="#{searching.selectedPapir.name}" />
+                <h:outputText value="#{searching.mic.name}" />
  
-                <h:outputText value="Ticker" />
-                <h:outputText value="#{searching.selectedPapir.ticker}" />
- 
-                <h:outputText value="Exch-code:" />
-                <h:outputText value="#{searching.selectedPapir.exchCode}" />
- 
-                <h:outputText value="figi:" />
-                <h:outputText value="$#{searching.selectedPapir.figi}" />
+                <h:outputText value="Corp-Exchange:" />
+                <h:outputText value="#{searching.mic.corp_exchange}" />
                 
-                <h:outputText value="Unique ID" />
-                <h:outputText value="$#{searching.selectedPapir.uniqueID}" />
+
             </p:panelGrid>
         </p:outputPanel>
     </p:dialog>	

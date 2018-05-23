@@ -62,7 +62,9 @@ public class Search implements SearchLocal {
 		List<Mic> exchlist = new ArrayList<>();		
 		@SuppressWarnings("unchecked")
 		List<Mapping_info> list = em.createNamedQuery("SearchPaper").setParameter("exch_code", exch).getResultList();
+		System.out.println("Size of list " + list.size());
 		for (Mapping_info mi: list) {
+			System.out.println("mi get " + mi.getEx_code());
 			for(Exchange_Code_Info ei: mi.getEx_code()){
 				exchlist.add(map(ei));
 			}

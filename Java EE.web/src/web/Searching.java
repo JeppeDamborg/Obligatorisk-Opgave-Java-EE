@@ -99,11 +99,38 @@ public class Searching implements Serializable {
 	
 	public void searchEx(){
 		try {
-			sl.search(selectedPapir.getExchCode());
+			System.out.println("Felt trykket " + selectedPapir.getExchCode());			
+			mics = sl.search(selectedPapir.getExchCode());	
+			if (mics.size() > 0) {
+				mic = mics.get(0);
+			} else  {
+				mic = null;
+			}
+			if (mics != null) {
+			System.out.println("Succes på " + mics.size());
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public List<Mic> getMics() {
+		return mics;
+	}
+	public void setMics(List<Mic> mics) {
+		this.mics = mics;
+	}
+	public Mic getMic() {
+		return mic;
+	}
+	public void setMic(Mic mic) {
+		this.mic = mic;
+	}
+	public Exch getExch() {
+		return exch;
+	}
+	public void setExch(Exch exch) {
+		this.exch = exch;
 	}
 	
 	//Hej Jeppe
