@@ -59,7 +59,7 @@
    
 </p:dataTable>
 
-<p:dialog header="Papir Info" widgetVar="papirDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+<p:dialog header="Papir Info" rendered="#{request.isUserInRole('role2')}" widgetVar="papirDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
         <p:outputPanel id="papirDetail" style="text-align:center;">
             <p:panelGrid  columns="2" rendered="#{not empty searching.mic}" columnClasses="label,value">
  
@@ -82,7 +82,7 @@
 </div>
 </h:form>
 <h:form id="form2">
-<p:commandButton id="triggerPOI" value="Read Excel" actionListener="#{searching.readExcel}" ajax="false"></p:commandButton>
+<p:commandButton id="triggerPOI" rendered="#{request.isUserInRole('role3')}" value="Read Excel" actionListener="#{searching.readExcel}" ajax="false"></p:commandButton>
 </h:form>
 </body>
 
